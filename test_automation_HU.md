@@ -106,28 +106,124 @@ koncentrál, a belső szerkezetre történő hivatkozás nélkül
 <img src="https://moolya.com/blog/wp-content/uploads/2023/05/Bug-Report.png" alt="image" width="300" height="220">
 
 #### ✅ Milyen lépéseket követnél egy hiba megtalálásakor?
+    1. Felfedezés után be kell kategorizálni a hibát súlyossága alapján. 
+    2. Utána történik a hibafeloldás, vagyis a hiba kijavítása. 
+    3. Ezután következik az ellenőrzés, hogy a hiba biztos ki lett javítva. 
+    4. Ha sikeres az ellenőrzés, akkor a hiba állapota lezárt lesz. 
+    5. Ezután készül el a hibajelentés (bug report) a tesztmenedszerek által, hogy a vezetői csapat jelzést kapjon a hibakezelés folyamatáról.
+
+ <img src="https://www.guru99.com/images/TestManagement/testmanagement_article_4_4.png" width="550" height="400">
 
 #### ✅ Beszélj a gyakori tesztjelentésekről és részleteikről!
+    A tesztjelentés célja, hogy összefoglalja és átadja a tesztelési tevékenységre vonatkozó információkat a tesztelési tevékenység során és annak végén. A vizsgálati tevékenység során elkészített tesztjelentést más néven tesztelőrehaladási jelentésnek, míg a tesztelési tevékenység végén elkészített tesztjelentést összefoglaló tesztjelentésnek is nevezik. A tesztmenedzser rendszeresen készít tesztelőrehaladási jelentéseket az érdekeltek számára.
+    A tipikus összefoglaló tesztjelentések tartalmazhatják az alábbiakat:
+        - Az elvégzett tesztelés összefoglalás
+        - Tájékoztatás a tesztelési időszak alatt történtekről
+        - A tesztelési tevékenységek ütemtervét, időtartamát vagy a ráfordításokat (és az eltéréseket is)
+        - Azok a tényezők, amelyek blokkolták vagy továbbra is blokkolják a haladás
+        - A tesztelés és a termékminőség állapota 
+        - Fennmaradó kockázatok
+        - Hibák, tesztesetek
+        - Erőforrás-fogyasztás mérőszámai
+
 
 #### ✅ Mit tartalmaz egy hibajelentés?
+    • Azonosító
+    • A bejelentett hiba címe és rövid összefoglalása
+    • A hibajelentés dátuma, a kibocsátó szervezet és a szerző
+    • A tesztelem (az éppen tesztelt konfigurációs elem) és a környezet azonosítója
+    • A fejlesztési életciklus fázisa(i), amelyben a hibát észlelték
+    • A hiba reprodukálását és megoldását lehetővé tevő leírás, beleértve a naplófájlokat, az adatbázis mentéseket, képernyőképeket vagy felvételeket (ha volt ilyen a teszt végrehajtása során)
+    • Elvárt és tényleges eredmények
+    • A hiba súlyosságának (severity) hatóköre vagy mértéke az érdekelt felek érdekeit tekintve
+    • A javítás sürgőssége/prioritása
+    • A hibajelentés állapota (pl. nyitott, elhalasztott, duplikált, megoldásra váró, ellenőrző tesztelésre váró, 
+    újranyitva, lezárt)
+    • Következtetések, ajánlások és jóváhagyások
+    • Globális problémák, például olyan területek, amelyekre a hibából eredő változás hatással lehet
+    • Változási előzmények, mint például a projektcsapat tagjai által a hibával kapcsolatos lépések, hogy 
+    elkülönítsék, javítsák és ellenőrizzék azt
+    • Hivatkozások, beleértve a problémát feltáró tesztesetet is
 
 #### ✅ Hogyan rangsorolnál egy hibát?
+    4 típusba sorolnám a hibákat:
+       - Kritikai: A hibát a lehető leghamarabb meg kell szüntetni, mivel az súlyosan érinti a rendszert, és a javításig nem használható
+       - Magas: A termék lényegére, fő részére van káros hatással
+       - Medium: Másodlagos funkcióval van hiba
+       - Alacsony: Minimálisan van hatással a termék működésére
+
+<img src="https://www.guru99.com/images/TestManagement/testmanagement_article_4_7.png" alt="image" width="320" height="220">
 
 
 ## Test Automation, Selenium
 <img src="https://media.licdn.com/dms/image/C4D12AQE3GOyVsZazOw/article-cover_image-shrink_600_2000/0/1583830696602?e=2147483647&v=beta&t=bYHbKyhMoWsMgtEug6eSf3m0db5ZtGEl437TeS1qkfI" alt="image" width="320" height="220">
 
 #### ✅ Melyik teszteseteket érdemes automatizálni és melyiket nem?
+    Tesztesetek, amelyeket érdemes automatizálni:
+        - Időigényes tesztek – amelyeket manuálisan nehéz vagy sokáig tart végrehajtani.
+        - Amelyek pontos adatbevitelhez vagy konzisztens végrehajtáshoz kötöttek
+        - Nagy mennyiségű adatot használó tesztek
+        - Többször változó tesztadatokkal végrehajtandó tesztek
+        - Kritikus funkciók automatizált ellenőrzése
 
-#### ✅ Írj le egy jó automatizált tesztet!
+    Tesztesetek, amelyeket nem érdemes automatizálni:
+        -Ritkán futtatott tesztek
+        - Folyamatosan változó felhasználói felület tesztelése 
+        - Kreativitást, intuíciót vagy emberi észlelést igénylő tesztek –
+        - Olyan tesztek, ahol a hibák csak nem várt módon lépnek fel 
+        - Tesztrögzítéssel létrehozott, lineáris szkriptek nagyszámú teszthez 
+
+#### ✅ Írj le egy jó automatizált tesztet! (Mitől lesz jó?)
+    - Stabil és megbízható (Nem bukik el hamisan, nem hagy hibákat észrevétlenül)
+    - Ismételhető
+    - Nem függ manuális előkészületektől vagy véletlenszerű tényezőktől
+    - Gyors (néhány másodperc alatt fut le)
+    - Olvasható és karbantartható (világos szerkezet, beszédes elnevezések)
+    - Könnyen frissíthető, ha a rendszer változik
+    - Független más tesztektől
+    - Így párhuzamosan is futtathatók és nem zavarják egymást
+    - Egyértelműen értékelhető
+    - Pontosan tudjuk, hogy mi a siker és mi a hiba kritériuma
+    - Valós üzleti értéket tesztel
+    - Olyan funkciót tesztel, amit a felhasználók ténylegesen használnak
+    - Automatikusan futtatható 
+    - Emberi beavatkozás nélkül végigfuthat
+    - Jól dokumentált
+    - Paraméterezhető és adatvezérelt
+
 
 #### ✅ Mi a Selenium, Selenium IDE és Selenium WebDriver?
+    A Selenium webalkalmazások automatikus tesztelésére szolgáló keretrendszer. Ez széles körben használható és az egyik legismertebb nyílt forrású teszteszköz.
+
+    A Selenium IDE egy Firefox add-on amely a böngésző interakciók egyszerű felvételére és lejátszására képes. Ez egy beépített fejlesztői környezet, melynek jelentése, hogy az applikáció segít neked szoftvereket fejleszteni a segédprogramokon keresztül.
+
+    A Selenium WebDriver mind a nyelvi kötésekre, mind az egyes böngészővezérlő kódok implementációira vonatkozik. Ezt általában egyszerűen WebDriverként emlegetik. Vezérli a böngészőt, ahogyan azt egy felhasználó tenné, akár helyben, akár egy távoli gépen a Selenium szerver használatával.
 
 #### ✅ Hogyan lehet azonosítani a webes elemeket?
+    1. Azonosító (id)
+    2. Név
+    3. Osztály
+    4. Címke (tag)
+    5. Link
+    6. XPath
+
 
 #### ✅ Hogyan lehet várni az elemekre, és mi lehet a probléma? Gyűjtsd össze a lehetséges hibákat és okokat!
+    Implicit várakozással, ami beállít egy általános maximális időt minden elemkereséshez.
+    Explicit várakozással egy adott feltétel teljesüléséig várakozik.
+
+    NoSuchElementException:	(elem nem található) Túl gyorsan keresi, még nem jelent meg
+
+    TimeoutException: (várakozási idő alatt nem jelent meg az elem)	Hosszú betöltési idő vagy hibás lokátor miatt
+
+    ElementNotVisibleException: (elem létezik, de nem látható) Az oldal még nem teljesen töltődött be
+
+
 
 #### ✅ Hasonlítsd össze a POM és a Keyword Driven Testing megközelítéseket!
+    A POM és a Keyword Driven Testing összehasonlításakor figyelembe kell venni a komplexitást, az újrafelhasználhatóságot, az olvashatóságot és a skálázhatóságot. 
+    A POM több kódolási készséget és erőfeszítést igényel a beállításához és karbantartásához, de nagyobb rugalmasságot és kontrollt kínál a tesztlogika és a végrehajtás felett. A Keyword Driven Testing egyszerűbb és könnyebben megvalósítható, de korlátozhatja a teszt lefedettségét és funkcionalitását. Az újrafelhasználhatóság mind a POM, mind a Keyword Driven Testing előnye, mivel csökkenti a kód duplikációját és a karbantartási költségeket. A POM olvashatósága javul az objektumorientált elvek miatt, amelyek elválasztják a felhasználói felület elemeit a tesztlogikától. A Keyword Driven Testing a teszteseteket olvashatóbbá teszi a természetes nyelv és a leíró kulcsszavak használatával. Végül a skálázhatóságot mind a POM, mind a Keyword Driven Testing támogatja, mivel képesek kezelni a dinamikus webalkalmazásokat, a különféle típusú alkalmazásokat, a különböző böngészőket és eszközöket, valamint a különböző paramétereket és konfigurációkat.
+
 
 #### ✅ Mi a különbség a TDD és BDD között?
 
