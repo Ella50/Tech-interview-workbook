@@ -112,7 +112,7 @@ koncentrál, a belső szerkezetre történő hivatkozás nélkül
     4. Ha sikeres az ellenőrzés, akkor a hiba állapota lezárt lesz. 
     5. Ezután készül el a hibajelentés (bug report) a tesztmenedszerek által, hogy a vezetői csapat jelzést kapjon a hibakezelés folyamatáról.
 
- <img src="https://www.guru99.com/images/TestManagement/testmanagement_article_4_4.png" width="550" height="400">
+ <img src="https://www.guru99.com/images/TestManagement/testmanagement_article_4_4.png" width="450" height="340">
 
 #### ✅ Beszélj a gyakori tesztjelentésekről és részleteikről!
     A tesztjelentés célja, hogy összefoglalja és átadja a tesztelési tevékenységre vonatkozó információkat a tesztelési tevékenység során és annak végén. A vizsgálati tevékenység során elkészített tesztjelentést más néven tesztelőrehaladási jelentésnek, míg a tesztelési tevékenység végén elkészített tesztjelentést összefoglaló tesztjelentésnek is nevezik. A tesztmenedzser rendszeresen készít tesztelőrehaladási jelentéseket az érdekeltek számára.
@@ -152,7 +152,7 @@ koncentrál, a belső szerkezetre történő hivatkozás nélkül
        - Medium: Másodlagos funkcióval van hiba
        - Alacsony: Minimálisan van hatással a termék működésére
 
-<img src="https://www.guru99.com/images/TestManagement/testmanagement_article_4_7.png" alt="image" width="320" height="220">
+<img src="https://www.guru99.com/images/TestManagement/testmanagement_article_4_7.png" alt="image" width="450" height="340">
 
 
 ## Test Automation, Selenium
@@ -221,13 +221,23 @@ koncentrál, a belső szerkezetre történő hivatkozás nélkül
 
 
 #### ✅ Hasonlítsd össze a POM és a Keyword Driven Testing megközelítéseket!
-    A POM és a Keyword Driven Testing összehasonlításakor figyelembe kell venni a komplexitást, az újrafelhasználhatóságot, az olvashatóságot és a skálázhatóságot. 
-    A POM több kódolási készséget és erőfeszítést igényel a beállításához és karbantartásához, de nagyobb rugalmasságot és kontrollt kínál a tesztlogika és a végrehajtás felett. A Keyword Driven Testing egyszerűbb és könnyebben megvalósítható, de korlátozhatja a teszt lefedettségét és funkcionalitását. Az újrafelhasználhatóság mind a POM, mind a Keyword Driven Testing előnye, mivel csökkenti a kód duplikációját és a karbantartási költségeket. A POM olvashatósága javul az objektumorientált elvek miatt, amelyek elválasztják a felhasználói felület elemeit a tesztlogikától. A Keyword Driven Testing a teszteseteket olvashatóbbá teszi a természetes nyelv és a leíró kulcsszavak használatával. Végül a skálázhatóságot mind a POM, mind a Keyword Driven Testing támogatja, mivel képesek kezelni a dinamikus webalkalmazásokat, a különféle típusú alkalmazásokat, a különböző böngészőket és eszközöket, valamint a különböző paramétereket és konfigurációkat.
+    A POM és a Keyword Driven Testing összehasonlításakor figyelembe kell venni a komplexitást, az újrafelhasználhatóságot, az olvashatóságot és a skálázhatóságot. A POM több kódolási készséget és erőfeszítést igényel a beállításához és karbantartásához, de nagyobb rugalmasságot és kontrollt kínál a tesztlogika és a végrehajtás felett. A Keyword Driven Testing egyszerűbb és könnyebben megvalósítható, de korlátozhatja a teszt lefedettségét és funkcionalitását. Az újrafelhasználhatóság mind a POM, mind a Keyword Driven Testing előnye, mivel csökkenti a kód duplikációját és a karbantartási költségeket. A POM olvashatósága javul az objektumorientált elvek miatt, amelyek elválasztják a felhasználói felület elemeit a tesztlogikától. A Keyword Driven Testing a teszteseteket olvashatóbbá teszi a természetes nyelv és a leíró kulcsszavak használatával. Végül a skálázhatóságot mind a POM, mind a Keyword Driven Testing támogatja, mivel képesek kezelni dinamikus webalkalmazásokat, különféle típusú alkalmazásokat, különböző böngészőket.
 
 
 #### ✅ Mi a különbség a TDD és BDD között?
+    Fókusz: A TDD elsősorban a kód tesztelésére, míg a BDD a rendszer viselkedésének és interakcióinak tesztelésére összpontosít.
+    Nyelv: A TDD-t általában programozási nyelvekkel valósítják meg, míg a BDD-hez egy természetesebb nyelvi formátumot használnak.
+    Közönség: A TDD főként a fejlesztőket célozza meg, míg a BDD a fejlesztők, tesztelők és érdekelt felek közötti együttműködést foglalja magában.
+    Tesztesetek: A TDD az egységtesztekre, míg a BDD az elfogadási tesztelésre és a végpontok közötti forgatókönyvekre helyezi a hangsúlyt.
+
 
 #### ✅ Mi az API tesztelés és miért hasznos?
+    Az API-tesztelés a szoftvertesztelés egy olyan formája, amely elemzi az API-t, és biztosítja, hogy az az elvárásoknak megfelelően teljesíti funkcióit. (szoftver komponensei közti kommunikáció, válaszidő, adathelyesség)
+    Hasznos, mert segít a szoftverfejlesztési életciklus minden szakaszában. Automatizálható és skálázható. Emellett gyors és stabil, mert nem függ a felhasználói felülettől.
 
 #### ✅ Mi az adatvezérelt tesztelés és miért hasznos?
+    Az adatvezérelt tesztelés egy szoftvertesztelési módszer, amelyben a tesztadatokat táblázat vagy táblázat formájában tárolják. Az adatvezérelt tesztelés lehetővé teszi a tesztelők számára, hogy egyetlen tesztszkriptet vigyenek be, amely képes tesztelni egy tábla összes tesztadatát, és a tesztkimenetet ugyanabban a táblában várja. Táblázatvezérelt tesztelésnek vagy paraméterezett tesztelésnek is nevezik.
+    Fontos, mert a tesztelők gyakran több adatkészlettel rendelkeznek egyetlen teszthez, és az egyes adatkészletekhez egyedi tesztek létrehozása időigényes lehet. Az adatvezérelt tesztelés segít az adatok elkülönítésében a tesztszkriptektől, és ugyanazok a tesztszkriptek futtathatók a bemeneti tesztadatok különböző kombinációihoz, és a teszteredmények hatékonyan generálhatók.
 
+
+<img src="https://www.guru99.com/images/1/032318_1019_WhatisDataD1.png" alt="image" width="550" height="220">
