@@ -128,22 +128,20 @@ koncentrál, a belső szerkezetre történő hivatkozás nélkül
 
 
 #### ✅ Mit tartalmaz egy hibajelentés?
-    • Azonosító
-    • A bejelentett hiba címe és rövid összefoglalása
-    • A hibajelentés dátuma, a kibocsátó szervezet és a szerző
-    • A tesztelem (az éppen tesztelt konfigurációs elem) és a környezet azonosítója
-    • A fejlesztési életciklus fázisa(i), amelyben a hibát észlelték
-    • A hiba reprodukálását és megoldását lehetővé tevő leírás, beleértve a naplófájlokat, az adatbázis mentéseket, képernyőképeket vagy felvételeket (ha volt ilyen a teszt végrehajtása során)
-    • Elvárt és tényleges eredmények
-    • A hiba súlyosságának (severity) hatóköre vagy mértéke az érdekelt felek érdekeit tekintve
-    • A javítás sürgőssége/prioritása
-    • A hibajelentés állapota (pl. nyitott, elhalasztott, duplikált, megoldásra váró, ellenőrző tesztelésre váró, 
-    újranyitva, lezárt)
-    • Következtetések, ajánlások és jóváhagyások
-    • Globális problémák, például olyan területek, amelyekre a hibából eredő változás hatással lehet
-    • Változási előzmények, mint például a projektcsapat tagjai által a hibával kapcsolatos lépések, hogy 
-    elkülönítsék, javítsák és ellenőrizzék azt
-    • Hivatkozások, beleértve a problémát feltáró tesztesetet is
+    - Azonosító
+    - A bejelentett hiba címe és rövid összefoglalása
+    - A hibajelentés dátuma, a kibocsátó szervezet és a szerző
+    - A tesztelem (az éppen tesztelt konfigurációs elem) és a környezet azonosítója
+    - A fejlesztési életciklus fázisa(i), amelyben a hibát észlelték
+    - A hiba reprodukálását és megoldását lehetővé tevő leírás, beleértve a naplófájlokat, az adatbázis mentéseket, képernyőképeket vagy felvételeket (ha volt ilyen a teszt végrehajtása során)
+    - Elvárt és tényleges eredmények
+    - A hiba súlyosságának (severity) hatóköre vagy mértéke az érdekelt felek érdekeit tekintve
+    - A javítás sürgőssége/prioritása
+    - A hibajelentés állapota (pl. nyitott, elhalasztott, duplikált, megoldásra váró, ellenőrző tesztelésre váró, újranyitva, lezárt)
+    - Következtetések, ajánlások és jóváhagyások
+    - Globális problémák, például olyan területek, amelyekre a hibából eredő változás hatással lehet
+    - Változási előzmények, mint például a projektcsapat tagjai által a hibával kapcsolatos lépések, hogy elkülönítsék, javítsák és ellenőrizzék azt
+    - Hivatkozások, beleértve a problémát feltáró tesztesetet is
 
 #### ✅ Hogyan rangsorolnál egy hibát?
     4 típusba sorolnám a hibákat:
@@ -190,6 +188,42 @@ koncentrál, a belső szerkezetre történő hivatkozás nélkül
     - Emberi beavatkozás nélkül végigfuthat
     - Jól dokumentált
     - Paraméterezhető és adatvezérelt
+
+
+    ```python
+
+    from selenium import webdriver
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.common.keys import Keys
+    import unittest
+
+    class LoginTest(unittest.TestCase):
+
+        def setUp(self):
+            self.driver = webdriver.Chrome()
+            self.driver.get("https://pelda.hu/login")
+
+        def test_successful_login(self):
+            driver = self.driver
+
+            username_input = driver.find_element(By.ID, "username")
+            password_input = driver.find_element(By.ID, "password")
+            login_button = driver.find_element(By.ID, "login-button")
+
+            username_input.send_keys("user")
+            password_input.send_keys("password")
+            login_button.click()
+
+            welcome_text = driver.find_element(By.ID, "welcome-message").text
+            self.assertIn("Üdvözöljük", welcome_text)
+
+        def tearDown(self):
+            self.driver.quit()
+
+    if __name__ == "__main__":
+        unittest.main()
+
+    ```
 
 
 #### ✅ Mi a Selenium, Selenium IDE és Selenium WebDriver?
@@ -244,13 +278,79 @@ koncentrál, a belső szerkezetre történő hivatkozás nélkül
 
 
 #### ✅ Mik a kihívások és ajánlott eljárások a dinamikusan betöltött webes elemekkel?
+    Kihívások:
+    -Elem túl későn jelenik meg vagyis a teszt túl gyors, az elem még nem töltődött be (NoSuchElementException/TimeoutException)
+    -Elem megjelenik, de nem interaktív, vagyis látható, de még nem kattintható vagy nem enabled
+    -DOM frissül, az elem elveszik (StaleElementReferenceException)
+    -a teszt futásideje és a UI betöltődése nem szinkronizált
+    -sleep() helytelen használata vagy túl rövid timeout
+
+    Eljárások:
+    -explicit várakozás (ha az elem elérhető, látható)
+    -feltétel használata, ami valóban garantálja az interakció lehetőségét (visibility_of_element_located/element_to_be_clickable/presence_of_element_located)
+    -újra lekérdezés (retry) használata vagy FluentWait
+    -túl bonyolult XPath-ek mellőzése
+    -wait for network idle vagy wait for selector használata
 
 #### ✅ Mik a mobil tesztautomatizálás kihívásai?
+    - Külöböző operációs rendszerek és böngészők 
+    - Kijelző méretek
+    - Hálózattípus és sebesség problémák
+    - Gyorsan változó felhasználói követelmények
+    - Navigációs különbségek
 
 ## Haladó témák
 <img src="https://www.softwaretestinghelp.com/wp-content/qa/uploads/2020/05/DevOps-in-a-Selenium-Testing.png" alt="image" width="320" height="220">
 
 #### ✅ Mi a különbség a CI és CD között?
+
+    A CI és a CD  a szoftverfejlesztésben használt két különböző, de egymásra épülő folyamat. A CI a kódot folyamatosan integrálja és teszteli, míg a CD a kódot folyamatosan szállítja és telepíti. Összevetve, a CI a készítésre (build) és tesztelésre, a CD pedig a telepítésre és kiadásra összpontosít. 
+
+    CI:
+        Folyamatosan integrálja a különböző fejlesztők által végzett változtatásokat egy közös kódkészletbe.
+        Automatizált tesztelést és építési folyamatokat használ, hogy a hibákat gyorsan észleljék.
+        A célja, hogy a fejlesztés gyors és egyszerű legyen, és a hibák minimálisak legyenek.
+        A CI a kódot készíti fel a kibocsátásra (build/test),. 
+        Fontos a verziókezelés, a fejlesztői munkák egy közös ágra integrálása, valamint automatizált integrációs tesztelések. 
+    CD:
+        Folyamatosan szállítja és telepíti a kódot a különböző környezetekbe (pl. teszt, fejlesztés, éles).
+        Automatizált folyamatokat használ, hogy a kód gyorsan és megbízhatóan kerüljön kiadásra.
+        A célja, hogy a fejlesztés gyors legyen, és az új funkciók gyorsan elérhetővé váljanak a felhasználók számára.
+        A CD a kódot ténylegesen kiadja (release/deploy). 
+        A CD a fejlesztői munkát a végfelhasználóhoz juttatja.
+
 #### ✅ Írj le egy Continuous Delivery folyamatot!
+
+    A Continuous Delivery (Folyamatos Szállítás) egy szoftverfejlesztési megközelítés, amelyben a szoftvert olyan módon fejlesztik, hogy bármikor megbízhatóan kiadható legyen a termelési környezetbe. Ez azt jelenti, hogy a szoftver kiadásához automatizált folyamatok és tesztkörnyezetek szükségesek, hogy az új build-ek automatikusan tesztelésre kerüljenek. A Continuous Delivery célja a szoftvergyártás hatékonyságának növelése, a piacra jutási idő lerövidítése és a hibák minimalizálása. 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Continuous_Delivery_process_diagram.svg/780px-Continuous_Delivery_process_diagram.svg.png" alt="image" width="750" height="520" style="background-color: white">
+
+    
+
 #### ✅ Hasonlítsd össze két népszerű CI rendszert, ezek közül az egyik legyen a Jenkins!
+
+        Jenkins - GitHub Actions
+
+    Típus: 
+        Független, nyílt forráskódú CI/CD szerver	   -     Beépített CI/CD rendszer a GitHub platformon belül
+    Telepítés:
+        Manuálisan kell telepíteni (pl. saját szerverre vagy cloudba)	-    Nincs telepítés – a GitHub automatikusan biztosítja
+    Plugin-támogatás:
+        Több mint 1800 plugin – rugalmas, de karbantartást igényel	-    Beépített integrációk + GitHub Marketplace actionök
+    Testreszabhatóság:
+        Nagyon magas – szinte bármit automatizálhatsz	-    Jó, de kicsit kötöttebb a GitHub ökoszisztémához
+    Közösség:
+        Nagy, régóta működő közösség	 -   Gyorsan növekvő, GitHub által aktívan támogatott
+    Konfiguráció:
+        UI-n keresztül vagy Groovy (Jenkinsfile) szkripttel	-    YAML fájl (.github/workflows)
+    Runner környezet:
+        Saját build agent kell (Jenkins agent)	-    GitHub biztosítja a build szervereket (vagy hozhatsz sajátot)
+    Jogosultságkezelés:
+        Részletes beállíthatóság, de bonyolultabb	-    A GitHub repo jogosultságaival örökölt, egyszerűbb
+    Monitorozás:
+        Bővíthető, de alapból egyszerű  -    Korlátozott, inkább alapvető visszajelzések
+
+
 #### ✅ Mi a Docker és miért hasznos?
+
+    Egy nyílt forráskódú szoftver, ami azt jelenti, hogy bárki felhasználhatja, módosíthatja és terjesztheti. 
+    A Docker segítségével egyénített, hordozható környezetek hozhatók létre, amelyekben az alkalmazások futhatnak. Megkönnyíti az alkalmazások üzemeltetését, például a konténerek verziózását, frissítését és skálázását.  Lehetővé teszi, hogy a fejlesztők gyorsabban dolgozzanak, mert az alkalmazások függetlenek a környezettől. A Docker konténerek segítségével egyszerűbben lehet hibákat keresni, mert a környezet teljesen egyénített. A konténerek könnyebben skálázhatók, ami azt jelenti, hogy a rendszer kapacitása gyorsan növelhető vagy csökkenthető. 
